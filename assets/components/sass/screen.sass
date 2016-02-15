@@ -1,0 +1,287 @@
+@import 'bourbon'
+@import 'reset'
+@import '../../../node_modules/sass-material-colors/sass/sass-material-colors'
+
+// Colours
+
+$accent:			material-color('blue-grey', '200')
+$background: 		material-color('blue-grey', '50')
+$border:			material-color('blue-grey', '200')
+$error:				material-color('red', '600')
+$highlight:			material-color('indigo', '600')
+$label:				material-color('blue-grey', '300')
+$text:				material-color('blue-grey', '800')
+$white:				#fff
+$buttonbg:			material-color('blue-grey', '800')
+$buttonbgout:		material-color('blue-grey', '300')
+$buttontxt:			#fff
+
+// Sizings
+$labeloffset:		15px
+$fieldpadding:		16px
+
+// Styles
+html
+	background: $background
+
+body
+	font: 14px/17px 'Roboto', sans-serif
+
+form
+	background: material-color('blue-grey', '50')
+	box-sizing: border-box
+	margin: 0 auto
+	padding: 20px 0
+	width: 300px
+
+// copy from here
+
+.fieldwrap
+	margin: 0 auto 10px
+	position: relative
+	width: 300px
+	
+label
+	background: transparent
+	box-sizing: border-box
+	color: $label
+	display: block
+	font-size: 18px
+	padding: 0
+	width: 100%
+	@include transition(all 0.2s ease-in-out)
+	
+input[type=text],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=date],
+input[type=search],
+input[type=url],
+input[type=tel],
+input[type=number],
+input[type=range],
+input[type=date],
+input[type=month],
+input[type=week],	
+input[type=time],
+textarea,
+select
+	background: $background
+	border: 1px solid transparent
+	border-bottom: 1px solid $border
+	border-radius: 0
+	box-sizing: border-box
+	color: $text
+	font: 16px/17px 'Roboto', sans-serif
+	margin: 0 0 $fieldpadding/2
+	padding: $fieldpadding+8 0 $fieldpadding/2
+	width: 300px
+	-webkit-appearance: none
+	-moz-appearance: none
+
+	& + label,
+	&.empty + label
+		left: 0
+		position: absolute
+		top: $labeloffset
+
+	&[type=date] + label,
+	&[type=range] + label,
+	&[type=month] + label,
+	&[type=week] + label,
+	&[type=time] + label,
+	&.notempty + label,
+	&:focus + label,
+	&.empty:focus + label
+		font-size: 12px
+		top: $labeloffset - 11
+
+	&[required] + label::after
+		color: $accent
+		content: '(optional)'
+		font-size: 12px
+		margin-left: 6px
+
+	&:focus
+		border-bottom-color: $highlight
+		color: $highlight
+		outline: none
+
+		& + label
+			color: $highlight
+
+	&:invalid + label::after
+		border-bottom-color: $error
+	
+select
+	
+	& + label:before
+		border: 7px solid transparent
+		border-top-color: $label
+		content: ''
+		display: block
+		right: 14px
+		position: absolute
+		top: 5px
+		@include transition(all 0.2s ease-in-out)
+
+	&:focus + label:before
+		border-top-color: $highlight
+	
+	&[value] + label:before,
+	&:focus + label:before,
+	&.notempty + label:before
+		top: 16px
+
+.fieldwrap-textarea::before
+	content: ''
+	display: block
+	height: 24px
+
+$textarea-width:		300px
+$textarea-minheight:	50px
+
+textarea
+	display: block
+	font: 16px/17px 'Roboto', sans-serif
+	min-height: $textarea-minheight
+	padding: 5px 0
+	resize: none
+	width: $textarea-width
+
+// http://www.impressivewebs.com/textarea-auto-resize/
+.hiddendiv
+	box-sizing: border-box
+	display: none
+	font: 16px/17px 'Roboto', sans-serif
+	min-height: $textarea-minheight
+	padding: 5px 0
+	white-space: pre-wrap
+	word-wrap: break-word
+	width: $textarea-width
+
+.noscroll
+	overflow: hidden
+		
+
+
+// Styling Cross-Browser Compatible Range Inputs with Sass
+// Github: https://github.com/darlanrod/input-range-sass
+// Author: Darlan Rod https://github.com/darlanrod
+// Version 1.0.1
+// MIT License
+
+$track-color: $border
+$thumb-color: $border
+
+$thumb-radius: 2px
+$thumb-height: 20px
+$thumb-width: 10px
+$thumb-border-width: 1px
+$thumb-border-color: $background
+
+$track-height: 1px
+
+$track-radius: 5px
+$contrast: 5%
+
+.fieldwrap-range
+	padding-top: 24px
+
+@mixin track()
+	cursor: pointer
+	height: $track-height
+	width: 100%
+	@include transition(all .2s ease)
+
+@mixin thumb()
+	background: $thumb-color
+	border: $thumb-border-width solid $thumb-border-color
+	border-radius: $thumb-radius
+	cursor: pointer
+	height: $thumb-height
+	width: $thumb-width
+
+	&:focus
+		background: $text
+
+input[type=range]
+	border: none
+	padding: $fieldpadding*2 0 $fieldpadding
+	-webkit-appearance: none
+
+	&::-webkit-slider-runnable-track 
+		@include track()
+		background: $track-color
+
+	&::-webkit-slider-thumb
+		@include thumb()
+		margin-top: (($track-height) / 2) - ($thumb-height / 2)
+		-webkit-appearance: none
+
+	&:focus::-webkit-slider-runnable-track,
+	&:focus::-webkit-slider-thumb
+		background: $highlight
+
+	&::-moz-range-track
+		background: $track-color
+		@include track()
+
+	&::-moz-range-thumb
+		@include thumb()
+
+	&::-ms-track
+		background: transparent
+		color: transparent
+		@include track()
+
+	&::-ms-fill-lower,
+	&::-ms-fill-upper
+		background: $white
+
+	&::-ms-thumb
+		@include thumb()
+
+	&:focus::-ms-fill-lower,
+	&:focus::-ms-fill-upper
+		background: $highlight
+		
+input[type=submit],
+input[type=button],
+button
+	background: $buttonbg
+	border-radius: 2px
+	color: $buttontxt
+	cursor: pointer
+	font: 14px/17px tahoma, sans-serif
+	letter-spacing: .1em
+	margin: 20px 10px 0 0
+	padding: 10px 16px
+	position: relative
+	text-transform: uppercase
+	width: 120px
+	@include radial-gradient($buttonbg, $buttonbgout)
+	@include radial-gradient($buttonbg, $buttonbgout, $fallback: $buttonbg)
+	@include radial-gradient(circle at 50% 50%, $buttonbgout 0%, $buttonbg 1%, $buttonbg)
+
+	/*.ink styles - the elements which will create the ripple effect. The size and position of these elements will be set by the JS code. Initially these elements will be scaled down to 0% and later animated to large fading circles on user click.*/
+	.ink
+		display: block
+		position: absolute
+		background: hsl(180, 40%, 80%)
+		border-radius: 100%
+		transform: scale(0)
+
+		/*animation effect*/
+		&.animate
+			animation: ripple 0.65s linear
+
+	@keyframes ripple
+		/*scale the element to 250% to safely cover the entire link and fade it out*/
+		100%
+			opacity: 0
+			transform: scale(2.5)
+
+			
+
