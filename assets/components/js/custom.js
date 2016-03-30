@@ -1,13 +1,16 @@
 // detects when a field is empty
 jQuery.fn.extend({
 	checkEmpty: function() {
+		console.log('check empty');
 		var $this = $(this);
 		if ($this.val() === '') {
+			console.log('empty');
 			$this
 				.addClass('empty')
 				.removeClass('notempty')
 			;
 		} else {
+			console.log('not empty');
 			$this
 				.addClass('notempty')
 				.removeClass('empty')
@@ -15,15 +18,19 @@ jQuery.fn.extend({
 		}
 	},
 	floatLabel: function() {
+		console.log('float label');
 		var $this = $(this);
+		$this.checkEmpty();
 		$this.bind("change paste keyup", function() {
+			console.log('event');
 			$this.checkEmpty();
 		});
 	}
 });
 
-$('input[type=text],input[type=password],input[type=email],input[type=number],input[type=tel],input[type=search],input[type=url]input[type=message],select,textarea').each(function() {
+$('input[type=text],input[type=password],input[type=email],input[type=number],input[type=tel],input[type=search],input[type=url],input[type=message],select,textarea').each(function() {
 	$(this).floatLabel();
+	console.log('init');
 });
 
 // detects when a checkbox or radio button has been selected

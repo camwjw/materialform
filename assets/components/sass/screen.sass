@@ -8,7 +8,7 @@ $accent:			material-color('blue-grey', '200')
 $background: 		material-color('blue-grey', '50')
 $border:			material-color('blue-grey', '200')
 $error:				material-color('red', '600')
-$highlight:			material-color('indigo', '600')
+$highlight:			material-color('orange', '800')
 $label:				material-color('blue-grey', '300')
 $text:				material-color('blue-grey', '600')
 $white:				#fff
@@ -98,7 +98,7 @@ select
 	&[type=week] + label,
 	&[type=time] + label,
 	&.notempty + label,
-	&:focus + label,
+	&:focus:not([type=range]) + label,
 	&.empty:focus + label
 		font-size: 12px
 		top: $labeloffset - 11
@@ -219,7 +219,7 @@ textarea
 				position: absolute
 				top: 4px
 				width: 10px
-				@include transform(rotate(0deg) scale(0))
+				@include transform(rotate(-90deg) scale(0))
 
 
 .radiowrap,
