@@ -171,14 +171,6 @@ textarea
 .radiowrap
 	margin: 30px 0 25px
 
-	input
-		cursor: pointer
-		left: -9999px
-		position: absolute
-
-		&:checked + span 
-			color: $text
-
 	label:not(:first-child)
 		cursor: pointer
 		position: relative
@@ -198,6 +190,7 @@ textarea
 			display: inline-block
 			line-height: 18px
 			padding: 0 0 0 22px
+			@include transition(all .2s ease-in-out)
 
 			&::before
 				background: $buttonbg
@@ -221,23 +214,91 @@ textarea
 				width: 10px
 				@include transform(rotate(-90deg) scale(0))
 
+	input
+		cursor: pointer
+		left: -9999px
+		position: absolute
 
-.radiowrap,
-.checkboxwrap
-	input:checked
-		+ span::before
-			color: $white
-			content: ' '
-			border-radius: 2px
-			text-align: center
-			@include transform(scale(1))
+		&:checked
+			+ span 
+				color: $text
+
+				&::before
+					color: $white
+					content: ' '
+					border-radius: 2px
+					text-align: center
+					@include transform(scale(1))
+					@include transition(all .2s ease-in-out)
+
+				&::after
+					@include transform(rotate(-45deg) scale(1))
+					@include transition(all .2s ease-in-out .1s)
+
+		&:focus
+			+ span
+				color: $highlight
+
+			&:checked
+				+ span::before
+					background: $highlight
+
+
+.togglewrap
+
+	label:not(:first-child)
+		cursor: pointer
+		position: relative
+
+		&::before
+			border: 7px solid $border
+			border-radius: 7px
+			content: ''
+			display: block
+			float: left
+			height: 0
+			margin: 0 4px 0 0
+			position: absolute
+			top: 3px
+			width: 23px
+
+		span
+			display: inline-block
+			line-height: 18px
+			padding: 0 0 0 45px
 			@include transition(all .2s ease-in-out)
 
-		+ span::after
-			@include transform(rotate(-45deg) scale(1))
-			@include transition(all .2s ease-in-out .1s)
+			&::before
+				border: 10px solid material-color('red', '700')
+				border-radius: 100%
+				content: ''
+				left: 0
+				position: absolute
+				top: 0
+				@include transition(all .2s ease-in-out)
 
-			
+			&::after
+				color: material-color('red', '700')
+				content: ' Off'
+
+		input
+			cursor: pointer
+			left: -9999px
+			position: absolute
+
+			&:checked + span::before
+				border-color: material-color('green', '600')
+				left: 17px
+
+			&:checked + span::after
+				color: material-color('green', '600')
+				content: ' On'
+
+
+
+
+// ----------------------------------------------------
+// TEXTAREA
 
 
 // http://www.impressivewebs.com/textarea-auto-resize/
@@ -254,7 +315,8 @@ textarea
 .noscroll
 	overflow: hidden
 		
-
+// ----------------------------------------------------
+// RANGE (Likely this will never be used, so feel free to remove it if that's the case)
 
 // Styling Cross-Browser Compatible Range Inputs with Sass
 // Github: https://github.com/darlanrod/input-range-sass
@@ -336,6 +398,9 @@ input[type=range]
 	&:focus::-ms-fill-lower,
 	&:focus::-ms-fill-upper
 		background: $highlight
+
+// ----------------------------------------------------
+// BUTTONS
 		
 input[type=submit],
 input[type=button],
@@ -354,27 +419,4 @@ button
 	@include radial-gradient($buttonbg, $buttonbgout)
 	@include radial-gradient($buttonbg, $buttonbgout, $fallback: $buttonbg)
 	@include radial-gradient(circle at 50% 50%, $buttonbgout 0%, $buttonbg 1%, $buttonbg)
-
-	// .ink styles - the elements which will create the ripple effect.
-	// The size and position of these elements will be set by the JS code.
-	// Initially these elements will be scaled down to 0% and later animated
-	// to large fading circles on user click.
-	.ink
-		display: block
-		position: absolute
-		background: hsl(180, 40%, 80%)
-		border-radius: 100%
-		transform: scale(0)
-
-		/*animation effect*/
-		&.animate
-			animation: ripple 0.65s linear
-
-	@keyframes ripple
-		/*scale the element to 250% to safely cover the entire link and fade it out*/
-		100%
-			opacity: 0
-			transform: scale(2.5)
-
-			
 
