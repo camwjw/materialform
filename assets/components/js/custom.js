@@ -1,17 +1,33 @@
 // detects when a field is empty
-$('input,select,textarea').each(function() {
-  var $this = $(this);
-  $this.bind("change paste keyup", function() {
-    if ($this.val() === '') {
-      $this.addClass('empty');
-      $this.removeClass('notempty');
-    } else {
-      $this.addClass('notempty');
-      $this.removeClass('empty');
-    }
-    //console.log($this.prop('class'));
-  });
+jQuery.fn.extend({
+	checkEmpty: function() {
+		var $this = $(this);
+		if ($this.val() === '') {
+			$this
+				.addClass('empty')
+				.removeClass('notempty')
+			;
+		} else {
+			$this
+				.addClass('notempty')
+				.removeClass('empty')
+			;
+		}
+	},
+	floatLabel: function() {
+		var $this = $(this);
+		$this.bind("change paste keyup", function() {
+			$this.checkEmpty();
+		});
+	}
 });
+
+$('input[type=text],input[type=password],input[type=email],input[type=number],input[type=tel],input[type=search],input[type=url]input[type=message],select,textarea').each(function() {
+	$(this).floatLabel();
+});
+
+// detects when a checkbox or radio button has been selected
+
 
 
 // http://thecodeplayer.com/walkthrough/ripple-click-effect-google-material-design

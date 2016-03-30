@@ -10,9 +10,9 @@ $border:			material-color('blue-grey', '200')
 $error:				material-color('red', '600')
 $highlight:			material-color('indigo', '600')
 $label:				material-color('blue-grey', '300')
-$text:				material-color('blue-grey', '800')
+$text:				material-color('blue-grey', '600')
 $white:				#fff
-$buttonbg:			material-color('blue-grey', '800')
+$buttonbg:			material-color('blue-grey', '600')
 $buttonbgout:		material-color('blue-grey', '300')
 $buttontxt:			#fff
 
@@ -50,6 +50,13 @@ label
 	padding: 0
 	width: 100%
 	@include transition(all 0.2s ease-in-out)
+	@include user-select(none)
+
+	+ label
+		display: inline-block
+		font-size: 14px
+		margin: 10px 20px 0 0
+		width: auto
 	
 input[type=text],
 input[type=password],
@@ -87,7 +94,6 @@ select
 		top: $labeloffset
 
 	&[type=date] + label,
-	&[type=range] + label,
 	&[type=month] + label,
 	&[type=week] + label,
 	&[type=time] + label,
@@ -113,6 +119,9 @@ select
 
 	&:invalid + label::after
 		border-bottom-color: $error
+
+// ----------------------------------------------------
+// SELECT
 	
 select
 	
@@ -123,7 +132,7 @@ select
 		display: block
 		right: 14px
 		position: absolute
-		top: 5px
+		top: 14px
 		@include transition(all 0.2s ease-in-out)
 
 	&:focus + label:before
@@ -132,7 +141,10 @@ select
 	&[value] + label:before,
 	&:focus + label:before,
 	&.notempty + label:before
-		top: 16px
+		top: 25px
+
+// ----------------------------------------------------
+// TEXTAREA
 
 .fieldwrap-textarea::before
 	content: ''
@@ -146,9 +158,87 @@ textarea
 	display: block
 	font: 16px/17px 'Roboto', sans-serif
 	min-height: $textarea-minheight
+	overflow: hidden
 	padding: 5px 0
 	resize: none
 	width: $textarea-width
+	@include transition(height 0.2s ease-in-out)
+
+// ----------------------------------------------------
+// CHECKBOX & RADIO
+
+.checkboxwrap,
+.radiowrap
+	margin: 30px 0 25px
+
+	input
+		cursor: pointer
+		left: -9999px
+		position: absolute
+
+		&:checked + span 
+			color: $text
+
+	label:not(:first-child)
+		cursor: pointer
+		position: relative
+
+		&::before
+			border: 1px solid $border
+			border-radius: 2px
+			content: ''
+			display: block
+			float: left
+			height: 16px
+			margin: 0 4px 0 0
+			position: absolute
+			width: 16px
+
+		span
+			display: inline-block
+			line-height: 18px
+			padding: 0 0 0 22px
+
+			&::before
+				background: $buttonbg
+				content: ''
+				height: 18px
+				left: 0px
+				position: absolute
+				top: 0px
+				width: 18px
+				@include transform(scale(0))
+
+			&::after
+				border: 2px solid $white
+				border-top: 0
+				border-right: 0
+				content: ''
+				height: 5px
+				left: 3px
+				position: absolute
+				top: 4px
+				width: 10px
+				@include transform(rotate(0deg) scale(0))
+
+
+.radiowrap,
+.checkboxwrap
+	input:checked
+		+ span::before
+			color: $white
+			content: ' '
+			border-radius: 2px
+			text-align: center
+			@include transform(scale(1))
+			@include transition(all .2s ease-in-out)
+
+		+ span::after
+			@include transform(rotate(-45deg) scale(1))
+			@include transition(all .2s ease-in-out .1s)
+
+			
+
 
 // http://www.impressivewebs.com/textarea-auto-resize/
 .hiddendiv
@@ -265,7 +355,10 @@ button
 	@include radial-gradient($buttonbg, $buttonbgout, $fallback: $buttonbg)
 	@include radial-gradient(circle at 50% 50%, $buttonbgout 0%, $buttonbg 1%, $buttonbg)
 
-	/*.ink styles - the elements which will create the ripple effect. The size and position of these elements will be set by the JS code. Initially these elements will be scaled down to 0% and later animated to large fading circles on user click.*/
+	// .ink styles - the elements which will create the ripple effect.
+	// The size and position of these elements will be set by the JS code.
+	// Initially these elements will be scaled down to 0% and later animated
+	// to large fading circles on user click.
 	.ink
 		display: block
 		position: absolute
