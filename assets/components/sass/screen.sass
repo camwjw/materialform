@@ -1,6 +1,7 @@
 @import 'bourbon'
 @import 'reset'
 @import '../../../node_modules/sass-material-colors/sass/sass-material-colors'
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,900,500,300)
 
 // Colours
 
@@ -9,11 +10,11 @@ $background: 		material-color('blue-grey', '50')
 $border:			material-color('blue-grey', '200')
 $error:				material-color('red', '600')
 $highlight:			material-color('orange', '800')
+$highlight2:		material-color('orange', '900')
 $label:				material-color('blue-grey', '300')
 $text:				material-color('blue-grey', '600')
 $white:				#fff
 $buttonbg:			material-color('blue-grey', '600')
-$buttonbgout:		material-color('blue-grey', '300')
 $buttontxt:			#fff
 
 // Sizings
@@ -26,6 +27,13 @@ html
 
 body
 	font: 14px/17px 'Roboto', sans-serif
+
+a
+	color: $text
+	@include transition(all 0.2s ease-in-out)
+
+	&:hover
+		color: $highlight
 
 form
 	background: material-color('blue-grey', '50')
@@ -117,6 +125,13 @@ select
 		& + label
 			color: $highlight
 
+	&:hover
+		border-bottom-color: $highlight2
+		color: $highlight2
+
+		& + label
+			color: $highlight2
+
 	&:invalid + label::after
 		border-bottom-color: $error
 
@@ -124,11 +139,13 @@ select
 // SELECT
 	
 select
+	cursor: pointer
 	
 	& + label:before
 		border: 7px solid transparent
 		border-top-color: $label
 		content: ''
+		cursor: pointer
 		display: block
 		right: 14px
 		position: absolute
@@ -137,6 +154,9 @@ select
 
 	&:focus + label:before
 		border-top-color: $highlight
+
+	&:hover + label:before
+		border-top-color: $highlight2
 	
 	&[value] + label:before,
 	&:focus + label:before,
@@ -173,6 +193,7 @@ textarea
 
 	label:not(:first-child)
 		cursor: pointer
+		padding: 6px 0
 		position: relative
 
 		&::before
@@ -198,7 +219,7 @@ textarea
 				height: 18px
 				left: 0px
 				position: absolute
-				top: 0px
+				top: 6px
 				width: 18px
 				@include transform(scale(0))
 
@@ -210,7 +231,7 @@ textarea
 				height: 5px
 				left: 3px
 				position: absolute
-				top: 4px
+				top: 10px
 				width: 10px
 				@include transform(rotate(-90deg) scale(0))
 
@@ -243,6 +264,43 @@ textarea
 				+ span::before
 					background: $highlight
 
+		&:hover
+			+ span
+				color: $highlight2
+
+			&:checked
+				+ span::before
+					background: $highlight2
+
+.radiowrap
+	label:not(:first-child)
+		&::before
+			border-radius: 50%
+
+		span
+			&::after
+				border: 2px solid $white
+				border-radius: 50%
+				content: ''
+				height: 10px
+				left: 2px
+				top: 8px
+				width: 10px
+				@include transform(rotate(0) scale(0))
+
+	input
+		cursor: pointer
+		left: -9999px
+		position: absolute
+
+		&:checked
+			+ span 
+				&::before
+					border-radius: 50%
+
+				&::after
+					@include transform(rotate(0) scale(1))
+					@include transition(all .3s ease-in-out)
 
 .togglewrap
 
@@ -259,27 +317,30 @@ textarea
 			height: 0
 			margin: 0 4px 0 0
 			position: absolute
-			top: 3px
+			top: 9px
 			width: 23px
 
 		span
 			display: inline-block
-			line-height: 18px
+			line-height: 30px
 			padding: 0 0 0 45px
 			@include transition(all .2s ease-in-out)
 
 			&::before
-				border: 10px solid material-color('red', '700')
+				border: 10px solid $text
 				border-radius: 100%
 				content: ''
 				left: 0
 				position: absolute
-				top: 0
+				top: 6px
 				@include transition(all .2s ease-in-out)
 
 			&::after
-				color: material-color('red', '700')
+				color: $text
 				content: ' Off'
+				display: inline-block
+				font-weight: bold
+				min-width: 22px
 
 		input
 			cursor: pointer
@@ -324,99 +385,139 @@ textarea
 // Version 1.0.1
 // MIT License
 
-$track-color: $border
-$thumb-color: $border
+// $track-color: $border
+// $thumb-color: $border
 
-$thumb-radius: 2px
-$thumb-height: 20px
-$thumb-width: 10px
-$thumb-border-width: 1px
-$thumb-border-color: $background
+// $thumb-radius: 2px
+// $thumb-height: 20px
+// $thumb-width: 10px
+// $thumb-border-width: 1px
+// $thumb-border-color: $background
 
-$track-height: 1px
+// $track-height: 1px
 
-$track-radius: 5px
-$contrast: 5%
+// $track-radius: 5px
+// $contrast: 5%
 
-.fieldwrap-range
-	padding-top: 24px
+// .fieldwrap-range
+// 	padding-top: 24px
 
-@mixin track()
-	cursor: pointer
-	height: $track-height
-	width: 100%
-	@include transition(all .2s ease)
+// @mixin track()
+// 	cursor: pointer
+// 	height: $track-height
+// 	width: 100%
+// 	@include transition(all .2s ease)
 
-@mixin thumb()
-	background: $thumb-color
-	border: $thumb-border-width solid $thumb-border-color
-	border-radius: $thumb-radius
-	cursor: pointer
-	height: $thumb-height
-	width: $thumb-width
+// @mixin thumb()
+// 	background: $thumb-color
+// 	border: $thumb-border-width solid $thumb-border-color
+// 	border-radius: $thumb-radius
+// 	cursor: pointer
+// 	height: $thumb-height
+// 	width: $thumb-width
 
-	&:focus
-		background: $text
+// 	&:focus
+// 		background: $text
 
-input[type=range]
-	border: none
-	padding: $fieldpadding*2 0 $fieldpadding
-	-webkit-appearance: none
+// input[type=range]
+// 	border: none
+// 	padding: $fieldpadding*2 0 $fieldpadding
+// 	-webkit-appearance: none
 
-	&::-webkit-slider-runnable-track 
-		@include track()
-		background: $track-color
+// 	&::-webkit-slider-runnable-track 
+// 		@include track()
+// 		background: $track-color
 
-	&::-webkit-slider-thumb
-		@include thumb()
-		margin-top: (($track-height) / 2) - ($thumb-height / 2)
-		-webkit-appearance: none
+// 	&::-webkit-slider-thumb
+// 		@include thumb()
+// 		margin-top: (($track-height) / 2) - ($thumb-height / 2)
+// 		-webkit-appearance: none
 
-	&:focus::-webkit-slider-runnable-track,
-	&:focus::-webkit-slider-thumb
-		background: $highlight
+// 	&:focus::-webkit-slider-runnable-track,
+// 	&:focus::-webkit-slider-thumb
+// 		background: $highlight
 
-	&::-moz-range-track
-		background: $track-color
-		@include track()
+// 	&::-moz-range-track
+// 		background: $track-color
+// 		@include track()
 
-	&::-moz-range-thumb
-		@include thumb()
+// 	&::-moz-range-thumb
+// 		@include thumb()
 
-	&::-ms-track
-		background: transparent
-		color: transparent
-		@include track()
+// 	&::-ms-track
+// 		background: transparent
+// 		color: transparent
+// 		@include track()
 
-	&::-ms-fill-lower,
-	&::-ms-fill-upper
-		background: $white
+// 	&::-ms-fill-lower,
+// 	&::-ms-fill-upper
+// 		background: $white
 
-	&::-ms-thumb
-		@include thumb()
+// 	&::-ms-thumb
+// 		@include thumb()
 
-	&:focus::-ms-fill-lower,
-	&:focus::-ms-fill-upper
-		background: $highlight
+// 	&:focus::-ms-fill-lower,
+// 	&:focus::-ms-fill-upper
+// 		background: $highlight
 
 // ----------------------------------------------------
 // BUTTONS
-		
+
+// raised style is default
 input[type=submit],
 input[type=button],
 button
 	background: $buttonbg
 	border-radius: 2px
+	box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)
 	color: $buttontxt
 	cursor: pointer
-	font: 14px/17px tahoma, sans-serif
-	letter-spacing: .1em
+	font: 13px/16px 'Roboto', tahoma, sans-serif
 	margin: 20px 10px 0 0
-	padding: 10px 16px
+	min-width: 40px
+	outline: none
+	padding: 9px 16px
 	position: relative
 	text-transform: uppercase
-	width: 120px
-	@include radial-gradient($buttonbg, $buttonbgout)
-	@include radial-gradient($buttonbg, $buttonbgout, $fallback: $buttonbg)
-	@include radial-gradient(circle at 50% 50%, $buttonbgout 0%, $buttonbg 1%, $buttonbg)
+	@include transition(all 0.2s ease-in-out)
+
+	// include the flat class for a less dominant button
+	&.flat
+		background: transparent
+		box-shadow: none
+		color: $buttonbg
+
+	&:hover
+		background: $highlight
+		box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)
+		color: $buttontxt
+
+	&:active
+		background: $highlight2
+		color: $buttontxt
+
+	// class added by JS to give animation effect
+	&.clicked
+		&::before
+			animation: fadeIn 1s
+			background: $highlight
+			border-radius: 50%
+			content: ''
+			display: block
+			height: 100px
+			opacity: 0
+			left: calc(50% - 50px)
+			position: absolute
+			top: -32px
+			width: 100px
+			@include transform(scale(0))
+
+
+@include keyframes(fadeIn)
+	from
+		@include transform(scale(0))
+		opacity: .5
+	to
+		@include transform(scale(1.5))
+		opacity: 0
 
