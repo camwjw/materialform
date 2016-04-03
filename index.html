@@ -1,87 +1,76 @@
 <!doctype html>
 <html class="no-js" lang="">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-        <title>Material Form</title>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Material Form</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <!-- Viewpoint -->
+    <meta name="viewport" content="initial-scale=1,width=device-width,maximum-scale=1,minimum-scale=1">
+    <script src="assets/js/modernizr.js"></script>
+</head>
 
-        <!-- CSS -->
-        <link rel="stylesheet" href="assets/css/styles.css">
-
-        <!-- Viewpoint -->
-        <meta name="viewport" content="initial-scale=1,width=device-width,maximum-scale=1,minimum-scale=1">
-
-        <script src="assets/js/modernizr.js"></script>
-    </head>
-    <body>
-
-        <form>
-        
-            <div class="fieldwrap">
-                <input type="email" id="email" required>
-                <label for="email">Email</label>
-            </div>
-
-            <div class="fieldwrap">
-                <input type="password" id="password" required>
-                <label for="password">Password</label>
-            </div>
-
-            <div class="fieldwrap">
-                <input type="text" id="text" value="">
-                <label for="text">Text</label>
-            </div>
-
-            <div class="fieldwrap checkboxwrap">
-                <label>Checkboxes</label>
-                <label>
-                    <input type="checkbox" value="">
-                    <span>Checkbox 1</span>
-                </label>
-                <label>
-                    <input type="checkbox" value="" checked>
-                    <span>Checkbox 2</span>
-                </label>
-                <label>
-                    <input type="checkbox" value="">
-                    <span>After the jersey is munted, you add all the sweet as <a href="#">toasted sandwiches</a> to the slipper you&apos;ve got yourself a meal</span>
-                </label>
-            </div>
-
-            <div class="fieldwrap togglewrap">
-                <label>Toggle Checkboxes</label>
-                <label>
-                    <input type="checkbox" value="">
-                    <span>Toggle 1 </span>
-                </label>
-                <label>
-                    <input type="checkbox" value="" checked>
-                    <span></span>
-                </label>
-            </div>
-
-            <div class="fieldwrap radiowrap">
-                <label>Radio buttons</label>
-                <label>
-                    <input type="radio" value="" name="radio">
-                    <span>Radio 1</span>
-                </label>
-                <label>
-                    <input type="radio" value="" name="radio">
-                    <span>Radio 2</span>
-                </label>
-            </div>            
-
-            <div class="fieldwrap">
-                <select id="select" class="notempty">
-                    <option>Please select</option>
-                    <option>first thing</option>
-                </select>
-                <label for="select">Select</label>
-            </div>
-
- <!--            <div class="fieldwrap">
+<body>
+    <form>
+        <div class="fieldwrap">
+            <input type="email" id="email" required>
+            <label for="email">Email</label>
+        </div>
+        <div class="fieldwrap">
+            <input type="password" id="password" required>
+            <label for="password">Password</label>
+        </div>
+        <div class="fieldwrap">
+            <input type="text" id="text" value="">
+            <label for="text">Text</label>
+        </div>
+        <div class="fieldwrap checkboxwrap">
+            <label>Checkboxes</label>
+            <label>
+                <input type="checkbox" value="">
+                <span>Checkbox 1</span>
+            </label>
+            <label>
+                <input type="checkbox" value="" checked>
+                <span>Checkbox 2</span>
+            </label>
+            <label>
+                <input type="checkbox" value="">
+                <span>After the jersey is munted, you add all the sweet as <a href="#">toasted sandwiches</a> to the slipper you&apos;ve got yourself a meal</span>
+            </label>
+        </div>
+        <div class="fieldwrap togglewrap">
+            <label>Toggle Checkboxes</label>
+            <label>
+                <input type="checkbox" value="">
+                <span>Toggle 1 </span>
+            </label>
+            <label>
+                <input type="checkbox" value="" checked>
+                <span></span>
+            </label>
+        </div>
+        <div class="fieldwrap radiowrap">
+            <label>Radio buttons</label>
+            <label>
+                <input type="radio" value="" name="radio">
+                <span>Radio 1</span>
+            </label>
+            <label>
+                <input type="radio" value="" name="radio">
+                <span>Radio 2</span>
+            </label>
+        </div>
+        <div class="fieldwrap">
+            <select id="select" class="notempty">
+                <option>Please select</option>
+                <option>first thing</option>
+            </select>
+            <label for="select">Select</label>
+        </div>
+        <!--            <div class="fieldwrap">
                 <input type="date" id="date" value="">
                 <label for="date">Date</label>
             </div>
@@ -125,22 +114,19 @@
                 <input type="time" id="time">
                 <label for="time">Time</label>
             </div> -->
+        <div class="fieldwrap fieldwrap-textarea">
+            <textarea id="textarea"></textarea>
+            <label for="textarea">Textarea</label>
+        </div>
+        <input type="submit" value="Submit">
+        <button>Button</button>
+        <button class="flat">Flat Button</button>
+    </form>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script>
+    window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js"><\/script>')
+    </script>
+    <script src="assets/js/script.js"></script>
+</body>
 
-
-            <div class="fieldwrap fieldwrap-textarea">
-                <textarea id="textarea"></textarea>
-                <label for="textarea">Textarea</label>
-            </div>
-
-            <input type="submit" value="Submit">
-            <button>Button</button>
-            <button class="flat">Flat Button</button>
-
-        </form>
-
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="node_modules/jquery/dist/jquery.min.js"><\/script>')</script>
-
-        <script src="assets/js/script.js"></script>
-    </body>
 </html>

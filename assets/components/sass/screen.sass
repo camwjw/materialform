@@ -5,67 +5,67 @@
 
 // Colours
 
-$accent:			material-color('blue-grey', '200')
-$background: 		material-color('blue-grey', '50')
-$border:			material-color('blue-grey', '200')
-$error:				material-color('red', '600')
-$highlight:			material-color('orange', '800')
-$highlight2:		material-color('orange', '900')
-$label:				material-color('blue-grey', '300')
-$text:				material-color('blue-grey', '600')
-$white:				#fff
-$buttonbg:			material-color('blue-grey', '600')
-$buttontxt:			#fff
+$accent:            material-color('blue-grey', '200')
+$background:        material-color('blue-grey', '50')
+$border:            material-color('blue-grey', '200')
+$error:             material-color('red', '600')
+$highlight:         material-color('orange', '800')
+$highlight2:        material-color('orange', '900')
+$label:             material-color('blue-grey', '300')
+$text:              material-color('blue-grey', '600')
+$white:             #fff
+$buttonbg:          material-color('blue-grey', '600')
+$buttontxt:         #fff
 
 // Sizings
-$labeloffset:		15px
-$fieldpadding:		16px
+$labeloffset:       15px
+$fieldpadding:      16px
 
 // Styles
 html
-	background: $background
+    background: $background
 
 body
-	font: 14px/17px 'Roboto', sans-serif
+    font: 14px/17px 'Roboto', sans-serif
 
 a
-	color: $text
-	@include transition(all 0.2s ease-in-out)
+    color: $text
+    @include transition(all 0.2s ease-in-out)
 
-	&:hover
-		color: $highlight
+    &:hover
+        color: $highlight
 
 form
-	background: material-color('blue-grey', '50')
-	box-sizing: border-box
-	margin: 0 auto
-	padding: 20px 0
-	width: 300px
+    background: material-color('blue-grey', '50')
+    box-sizing: border-box
+    margin: 0 auto
+    padding: 20px 0
+    width: 300px
 
 // copy from here
 
 .fieldwrap
-	margin: 0 auto 10px
-	position: relative
-	width: 300px
-	
+    margin: 0 auto 10px
+    position: relative
+    width: 300px
+    
 label
-	background: transparent
-	box-sizing: border-box
-	color: $label
-	display: block
-	font-size: 18px
-	padding: 0
-	width: 100%
-	@include transition(all 0.2s ease-in-out)
-	@include user-select(none)
+    background: transparent
+    box-sizing: border-box
+    color: $label
+    display: block
+    font-size: 18px
+    padding: 0
+    width: 100%
+    @include transition(all 0.2s ease-in-out)
+    @include user-select(none)
 
-	+ label
-		display: inline-block
-		font-size: 14px
-		margin: 10px 20px 0 0
-		width: auto
-	
+    + label
+        display: inline-block
+        font-size: 14px
+        margin: 10px 20px 0 0
+        width: auto
+    
 input[type=text],
 input[type=password],
 input[type=email],
@@ -78,282 +78,282 @@ input[type=number],
 input[type=range],
 input[type=date],
 input[type=month],
-input[type=week],	
+input[type=week],    
 input[type=time],
 textarea,
 select
-	background: $background
-	border: 1px solid transparent
-	border-bottom: 1px solid $border
-	border-radius: 0
-	box-sizing: border-box
-	color: $text
-	font: 16px/17px 'Roboto', sans-serif
-	margin: 0 0 $fieldpadding/2
-	padding: $fieldpadding+8 0 $fieldpadding/2
-	width: 300px
-	-webkit-appearance: none
-	-moz-appearance: none
+    background: $background
+    border: 1px solid transparent
+    border-bottom: 1px solid $border
+    border-radius: 0
+    box-sizing: border-box
+    color: $text
+    font: 16px/17px 'Roboto', sans-serif
+    margin: 0 0 $fieldpadding/2
+    padding: $fieldpadding+8 0 $fieldpadding/2
+    width: 300px
+    -webkit-appearance: none
+    -moz-appearance: none
 
-	& + label,
-	&.empty + label
-		left: 0
-		position: absolute
-		top: $labeloffset
+    & + label,
+    &.empty + label
+        left: 0
+        position: absolute
+        top: $labeloffset
 
-	&[type=date] + label,
-	&[type=month] + label,
-	&[type=week] + label,
-	&[type=time] + label,
-	&.notempty + label,
-	&:focus:not([type=range]) + label,
-	&.empty:focus + label
-		font-size: 12px
-		top: $labeloffset - 11
+    &[type=date] + label,
+    &[type=month] + label,
+    &[type=week] + label,
+    &[type=time] + label,
+    &.notempty + label,
+    &:focus:not([type=range]) + label,
+    &.empty:focus + label
+        font-size: 12px
+        top: $labeloffset - 11
 
-	&[required] + label::after
-		color: $accent
-		content: '(optional)'
-		font-size: 12px
-		margin-left: 6px
+    &[required] + label::after
+        color: $accent
+        content: '(optional)'
+        font-size: 12px
+        margin-left: 6px
 
-	&:focus
-		border-bottom-color: $highlight
-		color: $highlight
-		outline: none
+    &:focus
+        border-bottom-color: $highlight
+        color: $highlight
+        outline: none
 
-		& + label
-			color: $highlight
+        & + label
+            color: $highlight
 
-	&:hover
-		border-bottom-color: $highlight2
-		color: $highlight2
+    &:hover
+        border-bottom-color: $highlight2
+        color: $highlight2
 
-		& + label
-			color: $highlight2
+        & + label
+            color: $highlight2
 
-	&:invalid + label::after
-		border-bottom-color: $error
+    &:invalid + label::after
+        border-bottom-color: $error
 
 // ----------------------------------------------------
 // SELECT
-	
+    
 select
-	cursor: pointer
-	
-	& + label:before
-		border: 7px solid transparent
-		border-top-color: $label
-		content: ''
-		cursor: pointer
-		display: block
-		right: 14px
-		position: absolute
-		top: 14px
-		@include transition(all 0.2s ease-in-out)
+    cursor: pointer
+    
+    & + label:before
+        border: 7px solid transparent
+        border-top-color: $label
+        content: ''
+        cursor: pointer
+        display: block
+        right: 14px
+        position: absolute
+        top: 14px
+        @include transition(all 0.2s ease-in-out)
 
-	&:focus + label:before
-		border-top-color: $highlight
+    &:focus + label:before
+        border-top-color: $highlight
 
-	&:hover + label:before
-		border-top-color: $highlight2
-	
-	&[value] + label:before,
-	&:focus + label:before,
-	&.notempty + label:before
-		top: 25px
+    &:hover + label:before
+        border-top-color: $highlight2
+    
+    &[value] + label:before,
+    &:focus + label:before,
+    &.notempty + label:before
+        top: 25px
 
 // ----------------------------------------------------
 // TEXTAREA
 
 .fieldwrap-textarea::before
-	content: ''
-	display: block
-	height: 24px
+    content: ''
+    display: block
+    height: 24px
 
-$textarea-width:		300px
-$textarea-minheight:	50px
+$textarea-width:        300px
+$textarea-minheight:    50px
 
 textarea
-	display: block
-	font: 16px/17px 'Roboto', sans-serif
-	min-height: $textarea-minheight
-	overflow: hidden
-	padding: 5px 0
-	resize: none
-	width: $textarea-width
-	@include transition(height 0.2s ease-in-out)
+    display: block
+    font: 16px/17px 'Roboto', sans-serif
+    min-height: $textarea-minheight
+    overflow: hidden
+    padding: 5px 0
+    resize: none
+    width: $textarea-width
+    @include transition(height 0.2s ease-in-out)
 
 // ----------------------------------------------------
 // CHECKBOX & RADIO
 
 .checkboxwrap,
 .radiowrap
-	margin: 30px 0 25px
+    margin: 30px 0 25px
 
-	label:not(:first-child)
-		cursor: pointer
-		padding: 6px 0
-		position: relative
+    label:not(:first-child)
+        cursor: pointer
+        padding: 6px 0
+        position: relative
 
-		&::before
-			border: 1px solid $border
-			border-radius: 2px
-			content: ''
-			display: block
-			float: left
-			height: 16px
-			margin: 0 4px 0 0
-			position: absolute
-			width: 16px
+        &::before
+            border: 1px solid $border
+            border-radius: 2px
+            content: ''
+            display: block
+            float: left
+            height: 16px
+            margin: 0 4px 0 0
+            position: absolute
+            width: 16px
 
-		span
-			display: inline-block
-			line-height: 18px
-			padding: 0 0 0 22px
-			@include transition(all .2s ease-in-out)
+        span
+            display: inline-block
+            line-height: 18px
+            padding: 0 0 0 22px
+            @include transition(all .2s ease-in-out)
 
-			&::before
-				background: $buttonbg
-				content: ''
-				height: 18px
-				left: 0px
-				position: absolute
-				top: 6px
-				width: 18px
-				@include transform(scale(0))
+            &::before
+                background: $buttonbg
+                content: ''
+                height: 18px
+                left: 0px
+                position: absolute
+                top: 6px
+                width: 18px
+                @include transform(scale(0))
 
-			&::after
-				border: 2px solid $white
-				border-top: 0
-				border-right: 0
-				content: ''
-				height: 5px
-				left: 3px
-				position: absolute
-				top: 10px
-				width: 10px
-				@include transform(rotate(-90deg) scale(0))
+            &::after
+                border: 2px solid $white
+                border-top: 0
+                border-right: 0
+                content: ''
+                height: 5px
+                left: 3px
+                position: absolute
+                top: 10px
+                width: 10px
+                @include transform(rotate(-90deg) scale(0))
 
-	input
-		cursor: pointer
-		left: -9999px
-		position: absolute
+    input
+        cursor: pointer
+        left: -9999px
+        position: absolute
 
-		&:checked
-			+ span 
-				color: $text
+        &:checked
+            + span 
+                color: $text
 
-				&::before
-					color: $white
-					content: ' '
-					border-radius: 2px
-					text-align: center
-					@include transform(scale(1))
-					@include transition(all .2s ease-in-out)
+                &::before
+                    color: $white
+                    content: ' '
+                    border-radius: 2px
+                    text-align: center
+                    @include transform(scale(1))
+                    @include transition(all .2s ease-in-out)
 
-				&::after
-					@include transform(rotate(-45deg) scale(1))
-					@include transition(all .2s ease-in-out .1s)
+                &::after
+                    @include transform(rotate(-45deg) scale(1))
+                    @include transition(all .2s ease-in-out .1s)
 
-		&:focus
-			+ span
-				color: $highlight
+        &:focus
+            + span
+                color: $highlight
 
-			&:checked
-				+ span::before
-					background: $highlight
+            &:checked
+                + span::before
+                    background: $highlight
 
-		&:hover
-			+ span
-				color: $highlight2
+        &:hover
+            + span
+                color: $highlight2
 
-			&:checked
-				+ span::before
-					background: $highlight2
+            &:checked
+                + span::before
+                    background: $highlight2
 
 .radiowrap
-	label:not(:first-child)
-		&::before
-			border-radius: 50%
+    label:not(:first-child)
+        &::before
+            border-radius: 50%
 
-		span
-			&::after
-				border: 2px solid $white
-				border-radius: 50%
-				content: ''
-				height: 10px
-				left: 2px
-				top: 8px
-				width: 10px
-				@include transform(rotate(0) scale(0))
+        span
+            &::after
+                border: 2px solid $white
+                border-radius: 50%
+                content: ''
+                height: 10px
+                left: 2px
+                top: 8px
+                width: 10px
+                @include transform(rotate(0) scale(0))
 
-	input
-		cursor: pointer
-		left: -9999px
-		position: absolute
+    input
+        cursor: pointer
+        left: -9999px
+        position: absolute
 
-		&:checked
-			+ span 
-				&::before
-					border-radius: 50%
+        &:checked
+            + span 
+                &::before
+                    border-radius: 50%
 
-				&::after
-					@include transform(rotate(0) scale(1))
-					@include transition(all .3s ease-in-out)
+                &::after
+                    @include transform(rotate(0) scale(1))
+                    @include transition(all .3s ease-in-out)
 
 .togglewrap
 
-	label:not(:first-child)
-		cursor: pointer
-		position: relative
+    label:not(:first-child)
+        cursor: pointer
+        position: relative
 
-		&::before
-			border: 7px solid $border
-			border-radius: 7px
-			content: ''
-			display: block
-			float: left
-			height: 0
-			margin: 0 4px 0 0
-			position: absolute
-			top: 9px
-			width: 23px
+        &::before
+            border: 7px solid $border
+            border-radius: 7px
+            content: ''
+            display: block
+            float: left
+            height: 0
+            margin: 0 4px 0 0
+            position: absolute
+            top: 9px
+            width: 23px
 
-		span
-			display: inline-block
-			line-height: 30px
-			padding: 0 0 0 45px
-			@include transition(all .2s ease-in-out)
+        span
+            display: inline-block
+            line-height: 30px
+            padding: 0 0 0 45px
+            @include transition(all .2s ease-in-out)
 
-			&::before
-				border: 10px solid $text
-				border-radius: 100%
-				content: ''
-				left: 0
-				position: absolute
-				top: 6px
-				@include transition(all .2s ease-in-out)
+            &::before
+                border: 10px solid $text
+                border-radius: 100%
+                content: ''
+                left: 0
+                position: absolute
+                top: 6px
+                @include transition(all .2s ease-in-out)
 
-			&::after
-				color: $text
-				content: ' Off'
-				display: inline-block
-				font-weight: bold
-				min-width: 22px
+            &::after
+                color: $text
+                content: ' Off'
+                display: inline-block
+                font-weight: bold
+                min-width: 22px
 
-		input
-			cursor: pointer
-			left: -9999px
-			position: absolute
+        input
+            cursor: pointer
+            left: -9999px
+            position: absolute
 
-			&:checked + span::before
-				border-color: material-color('green', '600')
-				left: 17px
+            &:checked + span::before
+                border-color: material-color('green', '600')
+                left: 17px
 
-			&:checked + span::after
-				color: material-color('green', '600')
-				content: ' On'
+            &:checked + span::after
+                color: material-color('green', '600')
+                content: ' On'
 
 
 
@@ -364,18 +364,18 @@ textarea
 
 // http://www.impressivewebs.com/textarea-auto-resize/
 .hiddendiv
-	box-sizing: border-box
-	display: none
-	font: 16px/17px 'Roboto', sans-serif
-	min-height: $textarea-minheight
-	padding: 5px 0
-	white-space: pre-wrap
-	word-wrap: break-word
-	width: $textarea-width
+    box-sizing: border-box
+    display: none
+    font: 16px/17px 'Roboto', sans-serif
+    min-height: $textarea-minheight
+    padding: 5px 0
+    white-space: pre-wrap
+    word-wrap: break-word
+    width: $textarea-width
 
 .noscroll
-	overflow: hidden
-		
+    overflow: hidden
+        
 // ----------------------------------------------------
 // RANGE (Likely this will never be used, so feel free to remove it if that's the case)
 
@@ -400,65 +400,65 @@ textarea
 // $contrast: 5%
 
 // .fieldwrap-range
-// 	padding-top: 24px
+//     padding-top: 24px
 
 // @mixin track()
-// 	cursor: pointer
-// 	height: $track-height
-// 	width: 100%
-// 	@include transition(all .2s ease)
+//     cursor: pointer
+//     height: $track-height
+//     width: 100%
+//     @include transition(all .2s ease)
 
 // @mixin thumb()
-// 	background: $thumb-color
-// 	border: $thumb-border-width solid $thumb-border-color
-// 	border-radius: $thumb-radius
-// 	cursor: pointer
-// 	height: $thumb-height
-// 	width: $thumb-width
+//     background: $thumb-color
+//     border: $thumb-border-width solid $thumb-border-color
+//     border-radius: $thumb-radius
+//     cursor: pointer
+//     height: $thumb-height
+//     width: $thumb-width
 
-// 	&:focus
-// 		background: $text
+//     &:focus
+//         background: $text
 
 // input[type=range]
-// 	border: none
-// 	padding: $fieldpadding*2 0 $fieldpadding
-// 	-webkit-appearance: none
+//     border: none
+//     padding: $fieldpadding*2 0 $fieldpadding
+//     -webkit-appearance: none
 
-// 	&::-webkit-slider-runnable-track 
-// 		@include track()
-// 		background: $track-color
+//     &::-webkit-slider-runnable-track 
+//         @include track()
+//         background: $track-color
 
-// 	&::-webkit-slider-thumb
-// 		@include thumb()
-// 		margin-top: (($track-height) / 2) - ($thumb-height / 2)
-// 		-webkit-appearance: none
+//     &::-webkit-slider-thumb
+//         @include thumb()
+//         margin-top: (($track-height) / 2) - ($thumb-height / 2)
+//         -webkit-appearance: none
 
-// 	&:focus::-webkit-slider-runnable-track,
-// 	&:focus::-webkit-slider-thumb
-// 		background: $highlight
+//     &:focus::-webkit-slider-runnable-track,
+//     &:focus::-webkit-slider-thumb
+//         background: $highlight
 
-// 	&::-moz-range-track
-// 		background: $track-color
-// 		@include track()
+//     &::-moz-range-track
+//         background: $track-color
+//         @include track()
 
-// 	&::-moz-range-thumb
-// 		@include thumb()
+//     &::-moz-range-thumb
+//         @include thumb()
 
-// 	&::-ms-track
-// 		background: transparent
-// 		color: transparent
-// 		@include track()
+//     &::-ms-track
+//         background: transparent
+//         color: transparent
+//         @include track()
 
-// 	&::-ms-fill-lower,
-// 	&::-ms-fill-upper
-// 		background: $white
+//     &::-ms-fill-lower,
+//     &::-ms-fill-upper
+//         background: $white
 
-// 	&::-ms-thumb
-// 		@include thumb()
+//     &::-ms-thumb
+//         @include thumb()
 
-// 	&:focus::-ms-fill-lower,
-// 	&:focus::-ms-fill-upper
-// 		background: $highlight
+//     &:focus::-ms-fill-lower,
+//     &:focus::-ms-fill-upper
+//         background: $highlight
 
 // ----------------------------------------------------
 // BUTTONS
@@ -467,57 +467,57 @@ textarea
 input[type=submit],
 input[type=button],
 button
-	background: $buttonbg
-	border-radius: 2px
-	box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)
-	color: $buttontxt
-	cursor: pointer
-	font: 13px/16px 'Roboto', tahoma, sans-serif
-	margin: 20px 10px 0 0
-	min-width: 40px
-	outline: none
-	padding: 9px 16px
-	position: relative
-	text-transform: uppercase
-	@include transition(all 0.2s ease-in-out)
+    background: $buttonbg
+    border-radius: 2px
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)
+    color: $buttontxt
+    cursor: pointer
+    font: 13px/16px 'Roboto', tahoma, sans-serif
+    margin: 20px 10px 0 0
+    min-width: 40px
+    outline: none
+    padding: 9px 16px
+    position: relative
+    text-transform: uppercase
+    @include transition(all 0.2s ease-in-out)
 
-	// include the flat class for a less dominant button
-	&.flat
-		background: transparent
-		box-shadow: none
-		color: $buttonbg
+    // include the flat class for a less dominant button
+    &.flat
+        background: transparent
+        box-shadow: none
+        color: $buttonbg
 
-	&:hover
-		background: $highlight
-		box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)
-		color: $buttontxt
+    &:hover
+        background: $highlight
+        box-shadow: 0 2px 5px 0 rgba(0,0,0,.26)
+        color: $buttontxt
 
-	&:active
-		background: $highlight2
-		color: $buttontxt
+    &:active
+        background: $highlight2
+        color: $buttontxt
 
-	// class added by JS to give animation effect
-	&.clicked
-		&::before
-			animation: fadeIn 1s
-			background: $highlight
-			border-radius: 50%
-			content: ''
-			display: block
-			height: 100px
-			opacity: 0
-			left: calc(50% - 50px)
-			position: absolute
-			top: -32px
-			width: 100px
-			@include transform(scale(0))
+    // class added by JS to give animation effect
+    &.clicked
+        &::before
+            animation: fadeIn 1s
+            background: $highlight
+            border-radius: 50%
+            content: ''
+            display: block
+            height: 100px
+            opacity: 0
+            left: calc(50% - 50px)
+            position: absolute
+            top: -32px
+            width: 100px
+            @include transform(scale(0))
 
 
 @include keyframes(fadeIn)
-	from
-		@include transform(scale(0))
-		opacity: .5
-	to
-		@include transform(scale(1.5))
-		opacity: 0
+    from
+        @include transform(scale(0))
+        opacity: .5
+    to
+        @include transform(scale(1.5))
+        opacity: 0
 
